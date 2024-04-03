@@ -48,9 +48,8 @@
           {% for log in logs %}
           <tr>
             <th scope="row">{{ log.doc_id }}</th>
-            <td>{{ log.date_inserted }}</td>
+            <td>{{ log.hora }}</td>
             <td>X: {{ log.x }}, Y: {{ log.y }}, Z: {{ log.z }}, R: {{ log.r }}</td>
-            <td>{{ log.work }}</td>
           </tr>
           {% endfor %}
         </tbody>

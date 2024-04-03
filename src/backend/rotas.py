@@ -35,15 +35,17 @@ def encontrar_porta(porta_desejada):
 
 
 def criar_robot():
-    porta_escolhida = encontrar_porta('COM6')
+    porta_escolhida = encontrar_porta('COM7')
     if porta_escolhida is not None:
         return InteliArm(port=porta_escolhida, verbose=False)
     else:
         return None
     
-# robot = criar_robot()   
 
 atuador_ligado = False
+
+def check_movement(desired, actual, tolerance=3):
+    return all(abs(d - a) <= tolerance for d, a in zip(desired, actual))
 
 #Código flask para poder bater nas rotas
 #Codigo para a pagina inicial
@@ -57,7 +59,8 @@ def controles():
 
 @app.route('/log' , methods=['GET'])
 def log():
-    return render_template('log.html')
+    valores = db.valores()
+    return render_template('log.html', logs=valores)
 
 
 
@@ -66,8 +69,7 @@ def log():
 #Código flask para eu fazer com que o ROBO va para a posição HOME
 @app.route('/home', methods=["GET", "POST"])
 def home():
-    global robot
-    robot = criar_robot
+    robot = criar_robot()
     if robot is not None:
         print(f'Dobot conectado com sucesso')
     else:
@@ -79,7 +81,7 @@ def home():
         robot.movej_to(240,0,150,0, wait=True)
         posicao = robot.pose()
 
-        db.insert_position(*home_posicao)
+        db.coordenadas_add(*home_posicao)
 
         return jsonify({'success': True, 'message': 'Position inserted successfully.', 'Posição': posicao})
     
@@ -91,7 +93,6 @@ def home():
 # Rota para eu poder pegar a posição atual do ROBO e ele devolve uma lista em json
 @app.route('/posicao_atual', methods=['GET'])
 def pos_atual():
-    global robot 
     robot = criar_robot()
 
     if robot is not None:
@@ -113,7 +114,7 @@ def pos_atual():
 #essa rota usa a função para poder ligar e desligar o equipamento do robô
 @app.route('/equipamentos', methods=['GET', 'POST'])
 def equipamento():
-    global atuador_ligado, robot
+    global atuador_ligado
     robot =  criar_robot()
 
     if robot is not None:
@@ -137,7 +138,7 @@ def equipamento():
 
 @app.route('/movimentacao', methods=['GET', 'POST'])
 def movimento():
-    global robot
+    robot = criar_robot()
     if robot is not None:
         print(f'Dobot conectado com sucesso')
         if request.method == 'POST':
@@ -154,9 +155,9 @@ def movimento():
             
             try:
                 print(*posicao)
-                robot.movej_to(posicao, wait=True)
+                robot.movej_to(*posicao, wait=True)
                 posicao_atual = robot.pose()
-                db.insert_posicao(*posicao_atual)
+                db.coordenadas_add(*posicao_atual)
 
                 return jsonify({"status": "Sucesso", "mensagem":"Posicionamento realizado com sucesso."})
             except Exception as e:

@@ -11,58 +11,49 @@
 <body>
     <div class="container-fluid">
         <div class="row">
-            <!-- Coluna com os botões -->
-            <div class="col-sm-auto bg-light sticky-top">
-                <div class="d-flex flex-sm-column flex-row flex-nowrap bg-light align-items-center sticky-top">
-                    <!-- Botão de Ícone Bootstrap -->
-                    <a href="/tela_inicial" class="d-block p-3 link-dark text-decoration-none" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Icon-only">
-                        <i class="bi bi-flower1"></i>
-                    </a>
-                    <!-- Lista de botões -->
-                    <ul class="nav nav-pills nav-flush flex-sm-column flex-row flex-nowrap mb-auto mx-auto text-center align-items-center">
-                        <!-- Botão para Dashboard -->
-                        <li>
-                            <a href="/controles" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Dashboard">
-                                <i class="bi bi-controller"></i>
-                            </a>
-                        </li>
-                        <!-- Botão para Logs -->
-                        <li>
-                            <a href="/log" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Orders">
-                                <i class="bi bi-clipboard-data"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
             <!-- Coluna principal -->
             <div class="col-sm p-3 min-vh-100">
                 <!-- Conteúdo Principal -->
                 <div class="container mt-5">
                     <!-- Introdução -->
                     <div class="jumbotron">
-                        <h1 class="display-4">Funcionalidades</h1>
-                        <p class="lead">Uma aplicação web desenvolvida com Flask e TinyDB para controlar um robô e registrar seus logs de atividades.</p>
-                        <!-- Links para Botões -->
-                        <!-- <div>
-                            <a href="/control" class="btn btn-primary me-2">Controle do Robô</a>
-                            <a href="/log" class="btn btn-secondary">Logs do Robô</a>
-                        </div> -->
+                        <h3 class="display-4">Olá, como está</h3>
+                        <p class="lead">Aqui com o <strong>Controle</strong> voce vai poder mexer no robo e fazer algumas coisas.</p>
+                        <ul>
+                            <li class="nav-item">
+                                <a href="/controles" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Dashboard">
+                                    <i class="bi bi-controller fs-4"></i>
+                                </a>
+                            </li>
+                        </ul>
+                        <p class="lead">Ja na <strong>Prancheta</strong> voce consegue ver os logs dos pontos que foram visitados.</p>
+                        <ul>
+                            <li class="nav-item">
+                                <a href="/log" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Orders">
+                                    <i class="bi bi-clipboard-data fs-4"></i>
+                                </a>
+                            </li>
+                        </ul>
                     </div>
-                    <!-- Componentes da Aplicação -->
-                    <div class="card mb-3">
-                        <div class="card-header"><h5>Funcionamento</h5></div>
-                        <!-- <div class="card-body"> -->
-                        <p class="card-text">Utilizamos a <strong> API do FLASK</strong> para manusear as rotas da WEB e o banco de dados com o auxílio de <strong>TinyDB</strong> para armazenamento dos dados.</p>
-                        <!-- </div> -->
-                    </div>
-                    <!-- Funcionalidades Principais -->
-                    <div class="card mb-3">
-                        <div class="card-header"><h5>Movimento do ROBÔ</h5></div>
-                        <!-- <div class="card-body"> -->
-                        <p class="card-text">Controle o robô via <strong>interface WEB</strong>.</p>
-                        <!-- </div> -->
-                    </div>
+                </div>
+                <!-- Ícones -->
+                <div class="container text-center">
+                    <!-- Lista de botões -->
+                    <ul class="nav nav-pills nav-flush flex-sm-column flex-row flex-nowrap mb-auto mx-auto text-center align-items-center justify-content-center">
+                        <!-- Botão para Dashboard -->
+                        
+                        <!-- Botão para Logs -->
+                        
+                    </ul>
+                </div>
+            </div>
+            <!-- Coluna com os botões -->
+            <div class="col-sm-auto bg-light sticky-top">
+                <div class="d-flex flex-sm-column flex-row flex-nowrap bg-light align-items-center sticky-top">
+                    <!-- Botão de Ícone Bootstrap -->
+                    <a href="/tela_inicial" class="d-block p-3 link-dark text-decoration-none" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Icon-only">
+                        <i class="bi bi-flower1 fs-4"></i>
+                    </a>
                 </div>
             </div>
         </div>

@@ -32,26 +32,26 @@
             </div>
             <div class="col-sm p-3 min-vh-100">
               <div class="container mt-5">
-                <h2>Controle do Robô</h2>
+                <h3>Controles do Robô</h3>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#homeModal" hx-get="/home" hx-target="#invisible">
-                            <i class="bi bi-house-door-fill"></i> HOME
+                           HOME
                         </button>
                     </li>
                     <li class="list-group-item">
-                        <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#genericModal" hx-get="/posicao_atual" hx-target="#genericModalBody" hx-trigger="click">
-                            <i class="bi bi-geo-alt-fill"></i> POSIÇÃO ATUAL
+                        <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#genericModal" hx-get="/posicao_atual" hx-target="#genericModalBody" hx-trigger="click">
+                           POSIÇÃO ATUAL
                         </button>
                     </li>
                     <li class="list-group-item">
                         <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#actuatorModal">
-                            <i class="bi bi-power"></i> <span id="actuatorButtonText">Des/Lig Equipamento</span>
+                           <span id="actuatorButtonText">Des/Lig Equipamento</span>
                         </button>
                     </li>
                     <li class="list-group-item">
                         <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#coordenadasModal">
-                            <i class="bi bi-cursor-fill"></i> MOVER ROBÔ
+                           MOVER ROBÔ
                         </button>
                     </li>
                 </ul>
