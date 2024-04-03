@@ -5,7 +5,7 @@ import serial.tools.list_ports
 from flask_cors import CORS
 from flask import Flask
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='.././frontend/templates')
 
 # Habilitar o CORS para todos os domínios
 CORS(app)
@@ -41,7 +41,7 @@ def criar_robot():
     else:
         return None
     
-robot = criar_robot()   
+# robot = criar_robot()   
 
 atuador_ligado = False
 
@@ -50,6 +50,16 @@ atuador_ligado = False
 @app.route('/', methods=["GET"])
 def index():
     return render_template('tela_inicial.html')
+
+@app.route('/controles', methods=['GET'])
+def controles():
+    return render_template('controles.html')
+
+@app.route('/log' , methods=['GET'])
+def log():
+    return render_template('log.html')
+
+
 
 
 
@@ -159,6 +169,6 @@ def movimento():
                 
                 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port='8000', debug=True)
 
     
