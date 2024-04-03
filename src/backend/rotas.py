@@ -26,7 +26,7 @@ class InteliArm(pydobot.Dobot):
         super()._set_ptp_cmd(x, y, z, r, mode=pydobot.enums.PTPMode.MOVL_XYZ, wait=wait)
 
 
-def find_door(porta_desejada):
+def encontrar_porta(porta_desejada):
     portas = serial.tools.list_ports.comports()
     for porta in portas:
         if porta.device == porta_desejada:
@@ -34,14 +34,14 @@ def find_door(porta_desejada):
     return None
 
 
-def list_door():
-    porta_escolhida = find_door('COM6')
+def criar_robot():
+    porta_escolhida = encontrar_porta('COM6')
     if porta_escolhida is not None:
         return InteliArm(port=porta_escolhida, verbose=False)
     else:
         return None
     
-robot = list_door()   
+robot = criar_robot()   
 
 atuador_ligado = False
 
@@ -57,7 +57,7 @@ def index():
 @app.route('/home', methods=["GET", "POST"])
 def home():
     global robot
-    robot = list_door
+    robot = criar_robot
     if robot is not None:
         print(f'Dobot conectado com sucesso')
     else:
@@ -82,7 +82,7 @@ def home():
 @app.route('/posicao_atual', methods=['GET'])
 def pos_atual():
     global robot 
-    robot = list_door()
+    robot = criar_robot()
 
     if robot is not None:
         print(f'Dobot conectado com sucesso')
@@ -104,7 +104,7 @@ def pos_atual():
 @app.route('/equipamentos', methods=['GET', 'POST'])
 def equipamento():
     global atuador_ligado, robot
-    robot =  list_door()
+    robot =  criar_robot()
 
     if robot is not None:
         print(f'Dobot conectado com sucesso')
